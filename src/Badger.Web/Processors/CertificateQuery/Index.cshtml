@@ -1,0 +1,33 @@
+﻿@model Badger.Web.Processors.CertificateQuery.CertificateModel;
+@{
+    Layout = "_Layout";
+}
+
+<div id='app' style="width: fit-content">
+    <div style="        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.7em;
+        border: solid 1px #8797AF;
+        border-radius: 3px;
+        background-color: #56667A;
+        color: white;
+        padding: 3px
+">
+        CommonName: {{ commonName }} <br />
+        Issuer: {{ issuer }} <br />
+        NotBefore: {{ notBefore }} <br />
+        NotAfter: {{ notAfter }}
+    </div>
+</div>
+
+<script>
+    var vueApp = new Vue({
+        el: '#app',
+        data: {
+            commonName: "@Model.CommonName",
+            issuer: "@Model.Issuer",
+            notBefore: "@Model.NotBefore",
+            notAfter: "@Model.NotAfter"
+        }
+    })
+</script>
+
