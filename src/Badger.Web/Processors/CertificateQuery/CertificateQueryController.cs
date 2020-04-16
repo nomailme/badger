@@ -1,12 +1,12 @@
 ﻿using Badger.Web.Models;
 using Badger.Web.Processors.CertificateQuery;
 using Badger.Web.Processors.CertificateQuery.Extensions;
-using ImageMagick;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Badger.Web.Controllers
 {
@@ -19,13 +19,7 @@ namespace Badger.Web.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(Uri uri)
-        {
-            var model = new CertificateModel(uri);
-            return View(model);
-        }
-
-        public async System.Threading.Tasks.Task<IActionResult> GifAsync(Uri uri)
+        public async Task<IActionResult> Index(Uri uri)
         {
             var badger = new ImageBadger();
 
@@ -42,21 +36,6 @@ namespace Badger.Web.Controllers
             };
             var result = badger.Create(text);
             return File(result, "image/png");
-
-            //using (var image = new MagickImage(new MagickColor("#56667A"), 200, 80))
-            //{
-            //    var magic = new Drawables()
-            //    .FontPointSize(12)
-            //    .Font("PT Sans")
-            //    .FillColor(new MagickColor("white"))
-            //    .TextAlignment(TextAlignment.Left)
-            //    .Text(2, 12, "Issuer: Magick.NET")
-            //    .Text(2, 24, "CN: Magick.NET")
-            //    .Draw(image);
-
-
-            //    return this.File(image.ToByteArray(MagickFormat.Gif), "image/gif");
-            //}
         }
 
 
