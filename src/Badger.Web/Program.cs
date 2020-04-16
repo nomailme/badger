@@ -13,7 +13,7 @@ namespace Badger.Web
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).UseUrls("http://*:80").Build().Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -21,6 +21,7 @@ namespace Badger.Web
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls("http://*:80");
                 });
     }
 }
