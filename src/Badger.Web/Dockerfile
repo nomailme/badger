@@ -10,7 +10,7 @@ COPY . ./build/
 WORKDIR /build/
 RUN dotnet publish Badger.Web.csproj -r linux-x64 --self-contained true  -c $BUILDCONFIG -o /build/out /p:Version=$VERSION
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+FROM ubuntu
 EXPOSE 80
 WORKDIR /app
 
