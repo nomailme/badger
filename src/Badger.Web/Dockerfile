@@ -8,7 +8,7 @@ COPY . ./build/
 #RUN dotnet restore
 
 WORKDIR /build/
-RUN dotnet publish Badger.Web.csproj -r alpine-x64 --self-contained true  -c $BUILDCONFIG -o /build/out /p:Version=$VERSION /p:PublishTrimmed=true
+RUN dotnet publish Badger.Web.csproj -r alpine-x64 --self-contained true  -c $BUILDCONFIG -o /build/out /p:Version=$VERSION
 
 FROM alpine:3.9.4
 EXPOSE 80
