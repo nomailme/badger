@@ -21,6 +21,6 @@ jobs:
         # Password used to login docker registry
         password: ${{ secrets.dockerHubSecret }}
         # Docker build context
-        path: src/Badger
+        path: src/Badger.Web
         file: src/Badger.Web/Dockerfile
         repository: nomail/badger
