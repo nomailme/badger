@@ -11,6 +11,9 @@
   <ItemGroup>
     <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="7.16.0" />
   </ItemGroup>
+  <ItemGroup>
+    <RuntimeHostConfigurationOption Include="System.Globalization.Invariant" Value="true" />
+  </ItemGroup>
 
 
 
