@@ -12,14 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+    - uses: actions/checkout@v1
+    - name: Publish Docker Action
+      uses: jerray/publish-docker-action@v1.0.3
       with:
-        dotnet-version: 3.1.101
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+        # Username used to login docker registry
+        username: ${{ secrets.dockerHubUsername }}
+        # Password used to login docker registry
+        password: ${{ secrets.dockerHubSecret }}
+        # Docker build context
+        path: source/badger
+        file: src/Badger.Web/Dockerfile
+        repository: nomail/badger
