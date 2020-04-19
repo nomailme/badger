@@ -19,6 +19,11 @@ WORKDIR /app
 #wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
 #wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk && \
 #apk add glibc-2.28-r0.apk
+RUN apt-get update \
+ && apt-get install -y cabextract wget xfonts-utils \
+ && curl -s -o ttf-mscorefonts-installer_3.7_all.deb http://ftp.us.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.7_all.deb \
+ && sh -c "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections" \
+ && dpkg -i ttf-mscorefonts-installer_3.7_all.deb
 
 COPY --from=build /build/out .
 
