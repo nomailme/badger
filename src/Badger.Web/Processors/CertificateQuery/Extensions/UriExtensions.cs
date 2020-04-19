@@ -15,6 +15,7 @@ namespace Badger.Web.Processors.CertificateQuery.Extensions
             X509Certificate2 serverCertificate = null;
             handler.ServerCertificateCustomValidationCallback = (message, certificate, chain, policyErrors) =>
             {
+                policyErrors = System.Net.Security.SslPolicyErrors.None
                 serverCertificate = certificate;
                 return true;
             };
