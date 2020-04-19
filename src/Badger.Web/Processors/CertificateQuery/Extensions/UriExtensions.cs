@@ -12,7 +12,7 @@ namespace Badger.Web.Processors.CertificateQuery.Extensions
             X509Certificate2 serverCertificate = null;
             handler.ServerCertificateCustomValidationCallback = (message, certificate, chain, policyErrors) =>
             {
-                serverCertificate = certificate;
+                serverCertificate = new X509Certificate2(certificate);
                 return true;
             };
 
