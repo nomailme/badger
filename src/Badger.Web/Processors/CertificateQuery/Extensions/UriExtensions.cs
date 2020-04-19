@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -18,8 +19,15 @@ namespace Badger.Web.Processors.CertificateQuery.Extensions
             };
 
             var httpClient = new HttpClient();
-            var response = httpClient.GetAsync(uri).Result;
+            try
+            {
+                var response = httpClient.GetAsync(uri).Result;
 
+            }
+            catch(Exception ex)
+            {
+
+            }
             //var client = new TcpClient(uri.Host, uri.Port);
 
             //var sslStream = new SslStream(client.GetStream());
