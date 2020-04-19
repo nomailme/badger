@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Badger.Web.Controllers
 {
@@ -23,6 +24,7 @@ namespace Badger.Web.Controllers
             var badger = new ImageBadger();
 
             var certificate = uri.GetCertificateAsync();
+            _logger.LogInformation($"Certificate is: { GetCertificateInfo(certificate)} ");
             var info = certificate.GetCertificateInfo();
 
             var text = new List<LabeleldValue>
@@ -37,6 +39,14 @@ namespace Badger.Web.Controllers
             return File(result, "image/png");
         }
 
+        private static string GetCertificateInfo(X509Certificate2 certificate)
+        {
+            if (certificate == null)
+            {
+                return "empty";
+            }
+            return certificate.ToString();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
