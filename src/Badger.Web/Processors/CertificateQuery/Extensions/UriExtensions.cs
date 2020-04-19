@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Net.Http;
+using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
@@ -24,9 +25,8 @@ namespace Badger.Web.Processors.CertificateQuery.Extensions
                 var response = httpClient.GetAsync(uri).Result;
 
             }
-            catch(Exception ex)
+            catch(AuthenticationException)
             {
-
             }
             //var client = new TcpClient(uri.Host, uri.Port);
 
