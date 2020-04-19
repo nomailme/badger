@@ -20,10 +20,9 @@ WORKDIR /app
 #wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk && \
 #apk add glibc-2.28-r0.apk
 RUN apt-get update \
- && apt-get install -y cabextract wget xfonts-utils \
- && curl -s -o ttf-mscorefonts-installer_3.7_all.deb http://ftp.us.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.7_all.deb \
- && sh -c "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections" \
- && dpkg -i ttf-mscorefonts-installer_3.7_all.deb
+        && echo 'msttcorefonts msttcorefonts/accepted-mscorefonts-eula select true' | debconf-set-selections \
+        && apt-get install -y --allow-unauthenticated \
+        ttf-mscorefonts-installer*
 
 COPY --from=build /build/out .
 
