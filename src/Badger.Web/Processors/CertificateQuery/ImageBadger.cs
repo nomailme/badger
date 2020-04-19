@@ -29,7 +29,7 @@ namespace Badger.Web.Processors.CertificateQuery
                 magic.Draw(image);
 
 
-                return image.ToByteArray(MagickFormat.Jpeg);
+                return image.ToByteArray(MagickFormat.Png);
             }
         }
     }

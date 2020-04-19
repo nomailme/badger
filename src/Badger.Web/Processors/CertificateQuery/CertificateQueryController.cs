@@ -35,7 +35,7 @@ namespace Badger.Web.Controllers
                 new LabeleldValue{ Label = "NotAfter", Value= info.NotAfter.Value.ToString("dd.MM.yyyy")},
             };
             var result = badger.Create(text);
-            return File(result, "image/jpeg");
+            return File(result, "image/png");
         }
 
 
