@@ -18,14 +18,16 @@ namespace Badger.Web.Processors.CertificateQuery
 
                 var magic = new Drawables()
                 .FontPointSize(12)
+                
                 .Font("Courier New")
-                .FillColor(new MagickColor("white"))
+                
                 .TextAlignment(TextAlignment.Left);
 
                 for (int i = 0; i < values.Count; i++)
                 {
                     magic.Text(2, 12 * (i + 1), $"{values[i].Label}: {values[i].Value}");
                 }
+                magic.FillColor(new MagickColor(MagickColors.White));
                 magic.Draw(image);
 
 

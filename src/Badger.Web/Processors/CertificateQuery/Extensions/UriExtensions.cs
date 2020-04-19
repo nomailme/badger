@@ -18,7 +18,10 @@ namespace Badger.Web.Processors.CertificateQuery.Extensions
 
             var httpClient = new HttpClient(handler);
             var response = httpClient.GetAsync(uri).Result;
-
+            if (serverCertificate == null)
+            {
+                throw new ArgumentException($"Unable to get certificate from {uri}");
+            }
             return serverCertificate;
         }
     }
