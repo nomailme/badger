@@ -20,7 +20,7 @@ namespace Badger.Web.Processors.CertificateQuery.Extensions
                 return true;
             };
 
-            var httpClient = new HttpClient();
+            var httpClient = new HttpClient(handler);
             try
             {
                 var response = httpClient.GetAsync(uri).Result;
