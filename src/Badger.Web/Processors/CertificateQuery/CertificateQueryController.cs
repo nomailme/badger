@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace Badger.Web.Controllers
 {
@@ -19,11 +18,11 @@ namespace Badger.Web.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index(Uri uri)
+        public IActionResult Index(Uri uri)
         {
             var badger = new ImageBadger();
 
-            var certificate = await uri.GetCertificateAsync();
+            var certificate = uri.GetCertificateAsync();
             var info = certificate.GetCertificateInfo();
 
             var text = new List<LabeleldValue>

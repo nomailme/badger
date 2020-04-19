@@ -7,7 +7,7 @@ namespace Badger.Web.Processors.CertificateQuery.Extensions
 {
     public static class UriExtensions
     {
-        public static async Task<X509Certificate2> GetCertificateAsync(this Uri uri)
+        public static X509Certificate2 GetCertificateAsync(this Uri uri)
         {
             var handler = new HttpClientHandler();
             X509Certificate2 serverCertificate = null;
@@ -18,7 +18,7 @@ namespace Badger.Web.Processors.CertificateQuery.Extensions
             };
 
             var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync(uri);
+            var response = httpClient.GetAsync(uri).Result;
 
             //var client = new TcpClient(uri.Host, uri.Port);
 
